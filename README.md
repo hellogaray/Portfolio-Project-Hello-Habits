@@ -21,20 +21,3 @@ Embark on this iOS adventure with the 'iOS & Swift - The Complete iOS App Develo
 ## 🎭 Current Status
 
 The UI is a canvas in progress, mirroring the prototype. Expect some magic as assets get a stylish makeover—functional and fab for upcoming features!
-
-## 📂 Folder Structure
-
-- **Documentation:** Hidden scrolls of knowledge.
-- **Screenshots:** Glimpses into the visual journey.
-- **Source Code:** Where the magic happens.
-
-## 🌐 How to Contribute
-
-Become a part of the chic revolution! Fork, tweak, and dazzle—your contributions are the runway for Hello, Habits! App's style evolution.
-
-## 🙏 Acknowledgments
-
-- Fumio Sasaki for the minimalist muse.
-- [Course Name and Instructor] for the 'iOS & Swift' masterclass.
-
-Thanks for joining the stylish stroll through Hello, Habits! App's development runway! 🚀✨
