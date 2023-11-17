@@ -4,7 +4,10 @@
         <attribute name="dateAdded" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isReminderOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="selectedDays" optional="YES" attributeType="Transformable"/>
+        <attribute name="selectedDays" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Streak" representedClassName="Streak" syncable="YES" codeGenerationType="class">
+        <attribute name="count" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
     </entity>
 </model>

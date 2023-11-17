@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-struct CenteredBoldTitle: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .font(.headline)
-            .frame(maxWidth: .infinity)
-            .multilineTextAlignment(.center)
-    }
-}
 
 struct AddHabitView: View {
     @Environment(\.managedObjectContext) var manageObjContext
@@ -31,10 +23,18 @@ struct AddHabitView: View {
         NavigationView {
             VStack {
                 // Top Bar Section
+                
                 ZStack {
-                    Color(.secondarySystemBackground)
-                        .edgesIgnoringSafeArea(.top)
-                        .frame(height: 250)
+                    
+                    ZStack {
+                        Image("ellipse13")
+                        Image("ellipse14")
+                        Image("ellipse12")
+                        Image("ellipse11")
+                        Image("ellipse10")
+                    }
+                    .edgesIgnoringSafeArea(.top)
+                    .offset(y: -130)
                     
                     Image("vector_01")
                     Image("vector_02")
@@ -46,107 +46,117 @@ struct AddHabitView: View {
                     VStack(alignment: .center, spacing: 16) {
                         Spacer()
                         
-                        // Avatar and Greeting Section
-                        HStack {
-                            // Avatar
-                            Image("ellieavatar")
-                                .resizable()
-                                .frame(width: 140, height: 140)
-                                .clipShape(Circle())
-                            
-                            // Greeting and User Info
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack {
-                                    Text("Hello, \(Text("User").bold())!")
-                                        .font(.custom("Poppins", size: 30))
-                                        .foregroundColor(.primaryBrand)
-                                }
-                                
-                                Text("email@email.com")
-                                    .font(.custom("Poppins", size: 16))
-                                    .foregroundColor(.tertiaryBrand)
-                                    .fontWeight(.semibold)
-                                
-                                // Longest Streak
-                                RoundedRectangle(cornerRadius: 8)
-                                    .frame(width: 200, height: 64)
-                                    .foregroundColor(Color.primaryBrand) // Yellow color
-                                    .overlay(
-                                        HStack {
-                                            Image("lightningIcon")
-                                                .aspectRatio(contentMode: .fill)
-                                            
-                                            VStack(spacing: 4) {
-                                                Text("20 Days")
-                                                    .font(.custom("Helvetica Neue", size: 24))
-                                                    .bold()
-                                                    .italic()
-                                                    .foregroundColor(.white)
-                                                
-                                                
-                                                Text("Longest Streak")
-                                                // Replace with the dynamic streak value when available
-                                                    .font(.custom("Helvetica Neue", size: 18))
-                                                    .foregroundColor(.white)
-                                                    .fontWeight(.light)
-                                            }
-                                        }
-                                    )
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .foregroundColor(Color.white)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 16)
-                                                    .stroke(Color.primaryBrand, lineWidth: 5) // Add blue border with a width of 5
-                                            )
-                                            .blur(radius: 4) // Make the box blurrier
-                                            .shadow(color: Color(Color.primaryBrand).opacity(0.25), radius: 4, x: 0, y: 0.5)
-                                    )
-                            }
-                            .padding(.leading, 16)
-                        }
-                        .frame(maxWidth: .infinity)
-                        
-                        Spacer()
                     }
                     .frame(maxHeight: .infinity, alignment: .top)
                     .padding()
                 }
                 .frame(height: 250)
-                .border(Color.black)
                 
                 // Habits Section
-                VStack() {
-                    Section(header: Text("Habit Title")) {
+                VStack(alignment: .leading) {
+                    
+                    Section() {
+                        Text("Create a habit!")
+                            .font(.custom("Helvetica Neue", size: 36))
+                            .foregroundColor(.secondaryBrand)
+                            .bold()
+                            .padding(.top)
+                        
+                        
+                        Text("Start a new habit! Take a small step.")
+                            .font(.custom("Helvetica Neue", size: 18))
+                            .fontWeight(/*@START_MENU_TOKEN@*/.light/*@END_MENU_TOKEN@*/)
+                            .foregroundColor(Color("Regular Text"))
+                            .padding(.bottom)
+                    }
+                    
+                    
+                    Section(header:
+                                VStack() {
+                        Text("Habit")
+                            .font(.custom("Helvetica Neue", size: 22))
+                            .bold()
+                            .lineSpacing(24)
+                            .foregroundColor(.secondaryBrand)
+                    }
+                    ) {
                         TextField("Habit Title", text: $title)
+                            .padding(.horizontal)
+                            .frame(height: 40.0)
+                            .cornerRadius(8)
+                            .font(.custom("Helvetica Neue", size: 15))
+                            .foregroundColor(.regularText)
+                            .background(.fieldBackground)
+                            .padding(.bottom)
                     }
                     
-                    Section(header: Text("Reminder")) {
-                        Toggle("Enable Reminder", isOn: $isReminderOn)
-                        if isReminderOn {
-                            DatePicker("Reminder Time", selection: $reminderTime, displayedComponents: .hourAndMinute)
-                        }
+                    
+                    
+                    
+                    Section(header:
+                                VStack(alignment: .leading) {
+                        Toggle("Reminder", isOn: $isReminderOn)
+                            .tint(Color("Primary Brand"))
+                            .font(.custom("Helvetica Neue", size: 22))
+                            .bold()
+                            .lineSpacing(24)
+                            .foregroundColor(.secondaryBrand)
+                    }
+                    ) {
+                        DatePicker("", selection: $reminderTime, displayedComponents: .hourAndMinute )
+                            .font(.custom("Helvetica Neue", size: 15))
+                            .labelsHidden()
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .background(.fieldBackground)
+                            .disabled(!isReminderOn)
+                            .frame(maxWidth: .infinity)
+                            .opacity(isReminderOn ? 1 : 0.1)
+                            .padding(.bottom)
                     }
                     
-                    Section(header: Text("Frequency")) {
-                        ForEach(0..<daysOfWeek.count) { index in
-                            Toggle(daysOfWeek[index], isOn: Binding(
-                                get: { selectedDays.contains(index) },
-                                set: { isSelected in
-                                    if isSelected {
-                                        selectedDays.append(index)
-                                    } else {
-                                        selectedDays.removeAll { $0 == index }
+                    
+                    Section(header: Text("Frequency")
+                        .font(.custom("Helvetica Neue", size: 22))
+                        .bold()
+                        .lineSpacing(24)
+                        .foregroundColor(.secondaryBrand)) {
+                            
+                            HStack (spacing: 0){
+                                ForEach(0..<daysOfWeek.count) { index in
+                                    let dayAbbreviation = String(daysOfWeek[index].prefix(2))
+                                    Button(action: {
+                                        if selectedDays.contains(index) {
+                                            selectedDays.removeAll { $0 == index }
+                                        } else {
+                                            selectedDays.append(index)
+                                        }
+                                    }) {
+                                        ZStack {
+                                            Circle()
+                                                .fill(selectedDays.contains(index) ? .primaryBrand : .fieldBackground)
+                                                .frame(width: 35, height: 35)
+                                            
+                                            Text(dayAbbreviation)
+                                                .font(.custom("Helvetica Neue", size: 16))
+                                                .foregroundColor(selectedDays.contains(index) ? .white : .regularText)
+                                        }
                                     }
+                                    .foregroundColor(.black)
+
+                                    .padding(.horizontal, 8) // Adjust spacing between circles
                                 }
-                            ))
+                            }
                         }
-                    }
+                    
+                    
                 }
+                .padding([.leading, .bottom, .trailing])
+
                 
                 // Bottom Bar Section
                 VStack(alignment: .center, spacing: 10) {
-                    Button("Submit") {
+                    Button("SUBMIT") {
                         let habitController = HabitController()
                         habitController.addHabit(
                             title: title,
@@ -157,26 +167,29 @@ struct AddHabitView: View {
                         
                         dismiss()
                     }
-                    .font(.custom("Helvetica Neue", size: 20))
-                    .foregroundColor(.secondaryBrand)
+                    .font(.custom("Helvetica Neue", size: 14))
+                    .foregroundColor(.white)
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity)
+                    .frame(height: 50)
+                    .background(.primaryBrand)
+                    .cornerRadius(38)
                     
-                    
-                    Button("Cancel") {
+                    Button("CANCEL") {
                         dismiss()
                     }
-                    .font(.custom("Helvetica Neue", size: 20))
-                    .foregroundColor(.secondaryBrand)
+                    .font(.custom("Helvetica Neue", size: 15))
+                    .foregroundColor(.tertiaryBrand)
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity)
                 }
-                .border(Color.black)
                 .frame(maxHeight: .infinity, alignment: .bottom)
+                .padding()
             }
         }
     }
 }
+
 
 struct AddHabitView_Previews: PreviewProvider {
     static var previews: some View {

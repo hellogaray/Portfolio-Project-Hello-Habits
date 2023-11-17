@@ -13,7 +13,7 @@ struct HabitCardView: View {
     var isReminderEnabled: Bool
     @State private var selectedHour: Int = 0
     @State private var selectedMinute: Int = 0
-
+    
     var body: some View {
         HStack {
             // Icon

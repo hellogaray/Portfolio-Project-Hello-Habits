@@ -49,7 +49,6 @@ class HabitController: ObservableObject {
         habit.id = UUID()
         habit.title = title
         habit.isReminderOn = isReminderOn
-
         save(context: context)
     }
 
