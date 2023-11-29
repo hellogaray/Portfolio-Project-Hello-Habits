@@ -18,6 +18,7 @@ struct AddHabitView: View {
     @State private var selectedDays: [Int] = []
     
     let daysOfWeek = Calendar.current.weekdaySymbols
+    let dynamicOffset: CGFloat = -130
     
     var body: some View {
         NavigationView {
@@ -34,7 +35,7 @@ struct AddHabitView: View {
                         Image("ellipse10")
                     }
                     .edgesIgnoringSafeArea(.top)
-                    .offset(y: -130)
+                    .offset(y: dynamicOffset)
                     
                     Image("vector_01")
                     Image("vector_02")
@@ -123,7 +124,9 @@ struct AddHabitView: View {
                         .foregroundColor(.secondaryBrand)) {
                             
                             HStack (spacing: 0){
-                                ForEach(0..<daysOfWeek.count) { index in
+                                let daysOfWeekAbbreviations = daysOfWeek.map { String($0.prefix(2)) }
+
+                                ForEach(daysOfWeekAbbreviations.indices, id: \.self) { index in
                                     let dayAbbreviation = String(daysOfWeek[index].prefix(2))
                                     Button(action: {
                                         if selectedDays.contains(index) {
@@ -161,12 +164,12 @@ struct AddHabitView: View {
                         habitController.addHabit(
                             title: title,
                             isReminderOn: isReminderOn,
-                            //reminderTime: isReminderOn ? reminderTime : nil,
-                            //selectedDays: selectedDays, // Pass selected days
-                            context: manageObjContext)
-                        
+                            //selectedDays: selectedDays,
+                            context: manageObjContext
+                        )
                         dismiss()
                     }
+
                     .font(.custom("Helvetica Neue", size: 14))
                     .foregroundColor(.white)
                     .fontWeight(.bold)

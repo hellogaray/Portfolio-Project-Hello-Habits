@@ -123,7 +123,9 @@ struct EditHabitView: View {
                         .foregroundColor(.secondaryBrand)) {
                             
                             HStack (spacing: 0){
-                                ForEach(0..<daysOfWeek.count) { index in
+                                let daysOfWeekAbbreviations = daysOfWeek.map { String($0.prefix(2)) }
+
+                                ForEach(daysOfWeekAbbreviations.indices, id: \.self) { index in
                                     let dayAbbreviation = String(daysOfWeek[index].prefix(2))
                                     Button(action: {
                                         if selectedDays.contains(index) {

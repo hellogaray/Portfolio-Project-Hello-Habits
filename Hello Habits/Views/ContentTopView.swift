@@ -14,14 +14,14 @@ struct ContentTopView: View {
             // Background layers
             Color(.secondarySystemBackground)
                 .edgesIgnoringSafeArea(.top)
-                .frame(height: 250)
+                .frame(height: 200)
             
             Image("vector_01")
             Image("vector_02")
             
             Image("starBackground")
                 .edgesIgnoringSafeArea(.top)
-                .frame(height: 250)
+                .frame(height: 200)
             
             VStack(alignment: .center, spacing: 16) {
                 Spacer()
@@ -91,7 +91,7 @@ struct ContentTopView: View {
             }
             .frame(maxHeight: .infinity, alignment: .top)
         }
-        .frame(height: 250)
+        .frame(height: 200)
     }
 }
 

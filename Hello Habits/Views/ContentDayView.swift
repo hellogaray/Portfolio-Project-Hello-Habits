@@ -21,15 +21,59 @@ struct ContentDayView: View {
                 .disabled(selectedDay == -3)
                 
                 Spacer()
+
+                Text(dayNumber(for: selectedDay - 3))
+                    .font(.custom("Helvetica Neue", size: 14))
+                    .foregroundColor(Color.tertiaryBrand)
                 
-                VStack(spacing: 2) {
+                Spacer()
+
+                Text(dayNumber(for: selectedDay - 2))
+                    .font(.custom("Helvetica Neue", size: 14))
+                    .foregroundColor(Color.tertiaryBrand)
+
+                Spacer()
+
+                
+                Text(dayNumber(for: selectedDay - 1))
+                    .font(.custom("Helvetica Neue", size: 14))
+                    .foregroundColor(Color.tertiaryBrand)
+                
+                Spacer()
+
+                VStack(spacing: 3) {
                     Text(dayNumber(for: selectedDay))
-                        .font(.headline)
+                        .font(.custom("Helvetica Neue", size: 14))
+                        .foregroundColor(.white)
                         .padding(.bottom, 2)
                     
-                    Text(dayTitle(for: selectedDay))
-                        .font(.subheadline)
+                    Text(monthAbbreviation(for: selectedDay))
+                        .font(.custom("Helvetica Neue", size: 14))
+                        .foregroundColor(.white)
                 }
+                .padding(8)
+                .background(
+                    RoundedRectangle(cornerRadius: 29)
+                        .fill(Color.tertiaryBrand)
+                )
+
+                Spacer()
+
+                Text(dayNumber(for: selectedDay + 1))
+                    .font(.custom("Helvetica Neue", size: 14))
+                    .foregroundColor(Color.tertiaryBrand)
+                
+                Spacer()
+
+                Text(dayNumber(for: selectedDay + 2))
+                    .font(.custom("Helvetica Neue", size: 14))
+                    .foregroundColor(Color.tertiaryBrand)
+                
+                Spacer()
+
+                Text(dayNumber(for: selectedDay + 3))
+                    .font(.custom("Helvetica Neue", size: 14))
+                    .foregroundColor(Color.tertiaryBrand)
                 
                 Spacer()
                 
@@ -40,8 +84,10 @@ struct ContentDayView: View {
                 }
                 .disabled(selectedDay == 3)
             }
+            
             .padding()
         }
+        .padding(.horizontal)
     }
     
     func dayNumber(for day: Int) -> String {
@@ -52,12 +98,12 @@ struct ContentDayView: View {
         return dateFormatter.string(from: dayDate)
     }
     
-    func dayTitle(for day: Int) -> String {
+    func monthAbbreviation(for day: Int) -> String {
         let currentDate = Date()
-        let dayDate = Calendar.current.date(byAdding: .day, value: day, to: currentDate) ?? currentDate
+        let monthDate = Calendar.current.date(byAdding: .day, value: day, to: currentDate) ?? currentDate
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E"
-        return dateFormatter.string(from: dayDate)
+        dateFormatter.dateFormat = "MMM"
+        return dateFormatter.string(from: monthDate)
     }
 }
 

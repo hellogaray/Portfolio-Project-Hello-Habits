@@ -12,6 +12,8 @@ struct ContentBottomView: View {
     @Environment(\.managedObjectContext) var manageObjContext
     @Binding var showingAddView: Bool
     
+    
+    
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             Image("newHabitChevron")
@@ -20,16 +22,14 @@ struct ContentBottomView: View {
                 EmptyView()
             }
         
-            Button("New Habit") {
+            Button("NEW HABIT") {
                 showingAddView.toggle()
             }
-            .font(.custom("Helvetica Neue", size: 20))
+            .font(.custom("Helvetica Neue", size: 14))
             .foregroundColor(.secondaryBrand)
             .fontWeight(.bold)
             .frame(maxWidth: .infinity)
         }
-        .frame(maxHeight: .infinity, alignment: .bottom)
-        .padding()
     }
 }
 

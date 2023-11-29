@@ -21,24 +21,28 @@ struct ContentView: View {
             VStack {
                 // Top view containing navigation elements
                 ContentTopView()
-                
+                ContentDayView()
                 // Day view for navigating through days
                 /* TODO: Updates the list of habits depending on the day */
-                ContentDayView()
+                //ContentDayView()
                 
                 // List of habits
-                VStack(alignment: .center, spacing: 16) {
-                    ForEach(habit) { habit in
-                        // Card view for each habit
-                        HabitCardView(title: habit.title ?? "", frequency: "", isReminderEnabled: habit.isReminderOn)
+                ScrollView {
+                    
+                    VStack(alignment: .center, spacing: 16) {
+                        ForEach(habit) { habit in
+                            // Card view for each habit
+                            HabitCardView(title: habit.title ?? "", frequency: "", isReminderEnabled: habit.isReminderOn, reminderTime: "")
+                        }
                     }
+                    .padding()
+                    .background(Color(.systemBackground))
                 }
-                .padding()
-                .background(Color(.systemBackground))
                 
                 // Bottom view for adding new habits
                 ContentBottomView(manageObjContext: _manageObjContext, showingAddView: $showingAddView)
             }
+            .fixedSize(horizontal: true, vertical: false)
         }
     }
 }
