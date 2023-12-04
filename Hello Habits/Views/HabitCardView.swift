@@ -9,12 +9,13 @@ import SwiftUI
 
 struct HabitListView: View {
     var body: some View {
+        // Vertical stack containing HabitCardViews in a scrollable view
         VStack {
             ScrollView {
                 // Example of using HabitCardView with delete closure
-                HabitCardView(title: "Running", frequency: "Daily", isReminderEnabled: true, reminderTime: "M T W F")
+                HabitCardView(title: "Running", isReminderEnabled: true, reminderTime: Date(), selectedDays: "2,4,6,7")
                 
-                HabitCardView(title: "Exercise", frequency: "Daily", isReminderEnabled: false, reminderTime: "M T W T F S S")
+                HabitCardView(title: "Exercise", isReminderEnabled: false, reminderTime: Date(),  selectedDays: "0,1,2")
             }
         }
     }
@@ -22,22 +23,37 @@ struct HabitListView: View {
 
 struct HabitListView_Previews: PreviewProvider {
     static var previews: some View {
+        // Preview the HabitListView
         HabitListView()
     }
 }
 
 struct HabitCardView: View {
+    // Properties to represent habit details
     var title: String
-    var frequency: String
     var isReminderEnabled: Bool
-    var reminderTime: String
-    @State private var selectedHour: Int = 0
-    @State private var selectedMinute: Int = 0
+    var reminderTime: Date
+    var selectedDays: String
+    
+    // Days of the week abbreviations
+    let daysOfWeekAbbreviations = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+    
+    // State to track habit completion
+    @State var isCompleted = false
+    
+    @State private var isEditHabitViewPresented = false
+    
+    // Convert selectedDays string to an array of Int
+    var selectedDaysString: [Int] {
+        selectedDays.components(separatedBy: ",").compactMap { Int($0) }
+    }
     
     var body: some View {
+        // Horizontal stack containing habit details and completion button
         HStack  {
+          
             // Habit Icon
-            Image(systemName: "star")
+            Image(systemName: "pencil.circle")
                 .font(.title)
                 .foregroundColor(.secondaryBrand)
                 .frame(width: 50, height: 50)
@@ -47,36 +63,41 @@ struct HabitCardView: View {
             
             // Habit Details
             VStack(alignment: .leading, spacing: 2) {
+                // Title of the habit
                 Text(title)
                     .font(.custom("Helvetica Neue", size: 16))
                     .foregroundColor(.secondaryBrand)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                 
+                // Days of the week and reminder details
                 HStack {
                     Image(systemName: "bell")
                         .foregroundColor(.primaryBrand)
-                    Text("Repeat: \(frequency)")
-                        .font(.custom("Helvetica Neue", size: 12))
-                        .foregroundColor(.secondaryBrand)
-                        .opacity(0.5)
+                    ForEach(0..<daysOfWeekAbbreviations.count, id: \.self) { index in
+                        let dayAbbreviation = daysOfWeekAbbreviations[index]
+                        Text(dayAbbreviation)
+                            .font(.custom("Helvetica Neue", size: 12))
+                            .foregroundColor(selectedDaysString.contains(index) ? .secondaryBrand : .light)
+                    }
                 }
                 
+                // Display reminder details if enabled
                 if isReminderEnabled {
                     HStack {
                         Image(systemName: "repeat")
                             .foregroundColor(.primaryBrand)
-                        Text("Reminder: M T W T F S S")
+                        Text("Reminder: \(reminderTime, formatter: timeFormatter)")
                             .font(.custom("Helvetica Neue", size: 12))
                             .foregroundColor(.secondaryBrand)
-                            .opacity(0.5)
                     }
                 } else {
+                    // Display no reminder if not enabled
                     HStack {
                         Image(systemName: "repeat")
                             .foregroundColor(.secondaryBrand)
                             .opacity(0.5)
-                        Text("Reminder: M T W T F S S")
+                        Text("Reminder: None")
                             .font(.custom("Helvetica Neue", size: 12))
                             .foregroundColor(.secondaryBrand)
                             .opacity(0.4)
@@ -87,15 +108,34 @@ struct HabitCardView: View {
             
             Spacer()
             
-            // Checkmark
-            Image("habitMark")
-                .padding(.all)
+            // Toggle the isCompleted state when the button is tapped
+            Button(action: {
+                isCompleted.toggle()
+            }) {
+                // Display habit completion mark
+                if !isCompleted {
+                    Image("habitMark")
+                        .foregroundColor(isCompleted ? .primaryBrand : .gray)
+                }
+            }
+            .padding(.all)
+            .background(Color.white.opacity(0.001))
         }
+        .opacity(isCompleted ? 0.5 : 1.0)
         .background(
+            // Rounded rectangle background with shadow
             RoundedRectangle(cornerRadius: 16)
                 .foregroundColor(Color.white)
                 .shadow(color: Color(#colorLiteral(red: 0.2235294118, green: 0.2196078431, blue: 0.4549019608, alpha: 1)).opacity(0.25), radius: 1, x: 0, y: 0.5)
         )
         .padding(.horizontal)
     }
+    
+    // DateFormatter for displaying reminder time
+    private var timeFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter
+    }
 }
+

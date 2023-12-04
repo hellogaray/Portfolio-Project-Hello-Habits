@@ -4,6 +4,7 @@
 //
 //  Created by Leonel Garay on 11/16/23.
 //
+
 import SwiftUI
 import CoreData
 
@@ -21,24 +22,29 @@ struct ContentView: View {
             VStack {
                 // Top view containing navigation elements
                 ContentTopView()
-                ContentDayView()
+
                 // Day view for navigating through days
-                /* TODO: Updates the list of habits depending on the day */
-                //ContentDayView()
-                
+                ContentDayView()
+
                 // List of habits
                 ScrollView {
-                    
                     VStack(alignment: .center, spacing: 16) {
                         ForEach(habit) { habit in
+                            // Edit Card View
+                            NavigationLink(destination: EditHabitView(habit: habit)) {
+                            
                             // Card view for each habit
-                            HabitCardView(title: habit.title ?? "", frequency: "", isReminderEnabled: habit.isReminderOn, reminderTime: "")
+                            HabitCardView(title: habit.title ?? "",
+                                          isReminderEnabled: habit.isReminderOn,
+                                          reminderTime: habit.reminderTime ?? Date(),
+                                          selectedDays: habit.selectedDays ?? "")
+                            }
                         }
                     }
                     .padding()
                     .background(Color(.systemBackground))
                 }
-                
+
                 // Bottom view for adding new habits
                 ContentBottomView(manageObjContext: _manageObjContext, showingAddView: $showingAddView)
             }

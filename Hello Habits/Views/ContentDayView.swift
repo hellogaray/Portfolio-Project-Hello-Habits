@@ -13,34 +13,37 @@ struct ContentDayView: View {
     var body: some View {
         VStack {
             HStack {
+                // Button to navigate to the previous set of days
                 Button(action: {
                     selectedDay -= 1
                 }) {
                     Image("leftarrow")
                 }
-                .disabled(selectedDay == -3)
                 
                 Spacer()
 
+                // Display day number for selected day - 3
                 Text(dayNumber(for: selectedDay - 3))
                     .font(.custom("Helvetica Neue", size: 14))
                     .foregroundColor(Color.tertiaryBrand)
                 
                 Spacer()
 
+                // Display day number for selected day - 2
                 Text(dayNumber(for: selectedDay - 2))
                     .font(.custom("Helvetica Neue", size: 14))
                     .foregroundColor(Color.tertiaryBrand)
 
                 Spacer()
 
-                
+                // Display day number for selected day - 1
                 Text(dayNumber(for: selectedDay - 1))
                     .font(.custom("Helvetica Neue", size: 14))
                     .foregroundColor(Color.tertiaryBrand)
                 
                 Spacer()
 
+                // Display selected day with month abbreviation
                 VStack(spacing: 3) {
                     Text(dayNumber(for: selectedDay))
                         .font(.custom("Helvetica Neue", size: 14))
@@ -59,24 +62,28 @@ struct ContentDayView: View {
 
                 Spacer()
 
+                // Display day number for selected day + 1
                 Text(dayNumber(for: selectedDay + 1))
                     .font(.custom("Helvetica Neue", size: 14))
                     .foregroundColor(Color.tertiaryBrand)
                 
                 Spacer()
 
+                // Display day number for selected day + 2
                 Text(dayNumber(for: selectedDay + 2))
                     .font(.custom("Helvetica Neue", size: 14))
                     .foregroundColor(Color.tertiaryBrand)
                 
                 Spacer()
 
+                // Display day number for selected day + 3
                 Text(dayNumber(for: selectedDay + 3))
                     .font(.custom("Helvetica Neue", size: 14))
                     .foregroundColor(Color.tertiaryBrand)
                 
                 Spacer()
                 
+                // Button to navigate to the next set of days
                 Button(action: {
                     selectedDay += 1
                 }) {
@@ -90,6 +97,7 @@ struct ContentDayView: View {
         .padding(.horizontal)
     }
     
+    // Function to get the day number for a given offset from the current day
     func dayNumber(for day: Int) -> String {
         let currentDate = Date()
         let dayDate = Calendar.current.date(byAdding: .day, value: day, to: currentDate) ?? currentDate
@@ -98,6 +106,7 @@ struct ContentDayView: View {
         return dateFormatter.string(from: dayDate)
     }
     
+    // Function to get the month abbreviation for a given offset from the current day
     func monthAbbreviation(for day: Int) -> String {
         let currentDate = Date()
         let monthDate = Calendar.current.date(byAdding: .day, value: day, to: currentDate) ?? currentDate

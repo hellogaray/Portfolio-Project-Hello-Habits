@@ -39,25 +39,51 @@ class HabitController: ObservableObject {
             print("Unexpected error during save.")
         }
     }
-
     
-    func addHabit(title: String, isReminderOn: Bool, context: NSManagedObjectContext) {
-        print("Before creating Habit object")
-
-
+    func addHabit(title: String, isReminderOn: Bool, reminderTime: Date?, selectedDays: [Int], context: NSManagedObjectContext) {
         let habit = Habit(context: context)
         habit.id = UUID()
         habit.title = title
         habit.isReminderOn = isReminderOn
+        habit.reminderTime = reminderTime
+        habit.selectedDays = selectedDays.map { String($0) }.joined(separator: ",")
         save(context: context)
     }
-
-
     
-    func editHabit(habit: Habit, title: String, isReminderOn: Bool, context: NSManagedObjectContext) {
+    func editHabit(habit: Habit, title: String, isReminderOn: Bool, reminderTime: Date?, selectedDays: [Int], context: NSManagedObjectContext) {
         habit.title = title
         habit.isReminderOn = isReminderOn
-
+        habit.reminderTime = reminderTime
+        habit.selectedDays  = selectedDays.map { String($0) }.joined(separator: ",")
         save(context: context)
+    }
+    
+    
+    func deleteHabit(habit: Habit, context: NSManagedObjectContext) {
+        context.delete(habit)
+        save(context: context)
+    }
+    
+    func getHabits(context: NSManagedObjectContext) -> [Habit] {
+        do {
+            let request = NSFetchRequest<Habit>(entityName: "Habit")
+            return try context.fetch(request)
+        } catch {
+            print("Error fetching habits: \(error)")
+            return []
+        }
+    }
+    
+    func updateHabitsForToday(context: NSManagedObjectContext) -> [Habit] {
+        let todayIndex = Calendar.current.component(.weekday, from: Date()) - 1
+        let habits = getHabits(context: context)
+        
+        let filteredHabits = habits.filter { habit in
+            guard let selectedDays = habit.selectedDays else { return false }
+            let selectedDaysArray = selectedDays.components(separatedBy: ",").compactMap { Int($0) }
+            return selectedDaysArray.contains(todayIndex)
+        }
+        
+        return filteredHabits
     }
 }
