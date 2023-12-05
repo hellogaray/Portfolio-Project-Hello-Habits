@@ -16,6 +16,18 @@ struct HabitListView: View {
                 HabitCardView(title: "Running", isReminderEnabled: true, reminderTime: Date(), selectedDays: "2,4,6,7")
                 
                 HabitCardView(title: "Exercise", isReminderEnabled: false, reminderTime: Date(),  selectedDays: "0,1,2")
+                
+                HabitCardView(title: "Drink Tea", isReminderEnabled: true, reminderTime: Date(), selectedDays: "2")
+                
+                HabitCardView(title: "Exercise", isReminderEnabled: false, reminderTime: Date(),  selectedDays: "0,1,2")
+                
+                HabitCardView(title: "Walking the Dog", isReminderEnabled: true, reminderTime: Date(), selectedDays: "0,1,2,3,4,5,6")
+                
+                HabitCardView(title: "Meditate", isReminderEnabled: false, reminderTime: Date(),  selectedDays: "0,1,2,3,4,5,6")
+                
+                HabitCardView(title: "Morning Run", isReminderEnabled: false, reminderTime: Date(), selectedDays: "")
+                
+                HabitCardView(title: "Exercise Again", isReminderEnabled: false, reminderTime: Date(),  selectedDays: "0,1,2")
             }
         }
     }
@@ -25,6 +37,7 @@ struct HabitListView_Previews: PreviewProvider {
     static var previews: some View {
         // Preview the HabitListView
         HabitListView()
+            .previewLayout(.sizeThatFits)
     }
 }
 

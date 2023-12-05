@@ -30,7 +30,7 @@ struct ContentView: View {
                 ScrollView {
                     VStack(alignment: .center, spacing: 16) {
                         ForEach(habit) { habit in
-                            // Edit Card View
+                            // Edit Card View 
                             NavigationLink(destination: EditHabitView(habit: habit)) {
                             
                             // Card view for each habit

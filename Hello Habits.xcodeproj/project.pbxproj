@@ -7,31 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A5384292B07B364003203F8 /* HabitModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A5384272B07B364003203F8 /* HabitModel.xcdatamodeld */; };
 		0AA1DEB12B05E43A00777359 /* ContentTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA1DEB02B05E43A00777359 /* ContentTopView.swift */; };
 		0AA1DEB32B05E46800777359 /* ContentBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA1DEB22B05E46800777359 /* ContentBottomView.swift */; };
 		0AA1DEB52B05E52D00777359 /* HabitCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA1DEB42B05E52D00777359 /* HabitCardView.swift */; };
+		0AA76CCF2B1DC55E001C6846 /* LongestStreakBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA76CCE2B1DC55E001C6846 /* LongestStreakBarView.swift */; };
+		0AA76CD12B1DC604001C6846 /* GreetingAndUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA76CD02B1DC604001C6846 /* GreetingAndUserInfoView.swift */; };
+		0AA76CD32B1DC6C5001C6846 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA76CD22B1DC6C5001C6846 /* AvatarView.swift */; };
 		0AA922862B073D170084E4C6 /* ContentDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA922852B073D170084E4C6 /* ContentDayView.swift */; };
 		0AB257A52B04CD8E004E77B6 /* Hello_HabitsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB257A42B04CD8E004E77B6 /* Hello_HabitsApp.swift */; };
 		0AB257A72B04CD8E004E77B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB257A62B04CD8E004E77B6 /* ContentView.swift */; };
 		0AB257A92B04CD91004E77B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB257A82B04CD91004E77B6 /* Assets.xcassets */; };
 		0AB257AC2B04CD91004E77B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB257AB2B04CD91004E77B6 /* Preview Assets.xcassets */; };
-		0AB257B42B04CDC4004E77B6 /* HabitModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AB257B22B04CDC4004E77B6 /* HabitModel.xcdatamodeld */; };
 		0AB257BA2B04CE99004E77B6 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB257B92B04CE99004E77B6 /* AddHabitView.swift */; };
 		0AB257BC2B04CEB5004E77B6 /* EditHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB257BB2B04CEB5004E77B6 /* EditHabitView.swift */; };
 		0AB257BE2B04CF00004E77B6 /* HabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB257BD2B04CF00004E77B6 /* HabitController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A5384282B07B364003203F8 /* HabitModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitModel.xcdatamodel; sourceTree = "<group>"; };
 		0AA1DEB02B05E43A00777359 /* ContentTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTopView.swift; sourceTree = "<group>"; };
 		0AA1DEB22B05E46800777359 /* ContentBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBottomView.swift; sourceTree = "<group>"; };
 		0AA1DEB42B05E52D00777359 /* HabitCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCardView.swift; sourceTree = "<group>"; };
+		0AA76CCE2B1DC55E001C6846 /* LongestStreakBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongestStreakBarView.swift; sourceTree = "<group>"; };
+		0AA76CD02B1DC604001C6846 /* GreetingAndUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingAndUserInfoView.swift; sourceTree = "<group>"; };
+		0AA76CD22B1DC6C5001C6846 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		0AA922852B073D170084E4C6 /* ContentDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDayView.swift; sourceTree = "<group>"; };
 		0AB257A12B04CD8E004E77B6 /* Hello Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hello Habits.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB257A42B04CD8E004E77B6 /* Hello_HabitsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello_HabitsApp.swift; sourceTree = "<group>"; };
 		0AB257A62B04CD8E004E77B6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0AB257A82B04CD91004E77B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AB257AB2B04CD91004E77B6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0AB257B32B04CDC4004E77B6 /* HabitModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitModel.xcdatamodel; sourceTree = "<group>"; };
 		0AB257B92B04CE99004E77B6 /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
 		0AB257BB2B04CEB5004E77B6 /* EditHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitView.swift; sourceTree = "<group>"; };
 		0AB257BD2B04CF00004E77B6 /* HabitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitController.swift; sourceTree = "<group>"; };
@@ -88,7 +94,7 @@
 		0AB257B52B04CE51004E77B6 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
-				0AB257B22B04CDC4004E77B6 /* HabitModel.xcdatamodeld */,
+				0A5384272B07B364003203F8 /* HabitModel.xcdatamodeld */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -114,6 +120,9 @@
 			children = (
 				0AB257A62B04CD8E004E77B6 /* ContentView.swift */,
 				0AA1DEB02B05E43A00777359 /* ContentTopView.swift */,
+				0AA76CD22B1DC6C5001C6846 /* AvatarView.swift */,
+				0AA76CCE2B1DC55E001C6846 /* LongestStreakBarView.swift */,
+				0AA76CD02B1DC604001C6846 /* GreetingAndUserInfoView.swift */,
 				0AA922852B073D170084E4C6 /* ContentDayView.swift */,
 				0AA1DEB22B05E46800777359 /* ContentBottomView.swift */,
 				0AA1DEB42B05E52D00777359 /* HabitCardView.swift */,
@@ -195,14 +204,17 @@
 			files = (
 				0AB257A72B04CD8E004E77B6 /* ContentView.swift in Sources */,
 				0AB257BA2B04CE99004E77B6 /* AddHabitView.swift in Sources */,
+				0AA76CD12B1DC604001C6846 /* GreetingAndUserInfoView.swift in Sources */,
 				0AA1DEB52B05E52D00777359 /* HabitCardView.swift in Sources */,
+				0AA76CD32B1DC6C5001C6846 /* AvatarView.swift in Sources */,
+				0AA76CCF2B1DC55E001C6846 /* LongestStreakBarView.swift in Sources */,
 				0AB257BE2B04CF00004E77B6 /* HabitController.swift in Sources */,
+				0A5384292B07B364003203F8 /* HabitModel.xcdatamodeld in Sources */,
 				0AA1DEB32B05E46800777359 /* ContentBottomView.swift in Sources */,
 				0AB257A52B04CD8E004E77B6 /* Hello_HabitsApp.swift in Sources */,
 				0AA922862B073D170084E4C6 /* ContentDayView.swift in Sources */,
 				0AA1DEB12B05E43A00777359 /* ContentTopView.swift in Sources */,
 				0AB257BC2B04CEB5004E77B6 /* EditHabitView.swift in Sources */,
-				0AB257B42B04CDC4004E77B6 /* HabitModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,12 +422,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		0AB257B22B04CDC4004E77B6 /* HabitModel.xcdatamodeld */ = {
+		0A5384272B07B364003203F8 /* HabitModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				0AB257B32B04CDC4004E77B6 /* HabitModel.xcdatamodel */,
+				0A5384282B07B364003203F8 /* HabitModel.xcdatamodel */,
 			);
-			currentVersion = 0AB257B32B04CDC4004E77B6 /* HabitModel.xcdatamodel */;
+			currentVersion = 0A5384282B07B364003203F8 /* HabitModel.xcdatamodel */;
 			path = HabitModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

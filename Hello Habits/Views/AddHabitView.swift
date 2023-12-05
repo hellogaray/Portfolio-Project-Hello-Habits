@@ -165,7 +165,6 @@ struct AddHabitView: View {
                             }
                         }
                     }
-                    .padding(.bottom)
                     
                     // Habit icon selection
 //                    Section(header:
